@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { Episode } from '../model/episode.model';
-import { Show } from '../model/show.model';
+import { Episode } from '../models/episode.model';
+import { Show } from '../models/show.models';
 
 @Component({
   selector: 'app-show-details',

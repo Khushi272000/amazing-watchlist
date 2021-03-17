@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import {Show} from '../models/show.models';
+import { Injectable } from '@angular/core';
+import { show } from '../models/show.models';
+import { Episodes } from '../models/episode.model';
+import {Observable, of} from'rxjs';
 
-@Component({
-  selector: 'app-search-results',
-  templateUrl: './search-results.component.html',
-  styleUrls: ['./search-results.component.css']
+@Injectable({
+  providedIn: 'root'
 })
-export class SearchResultsComponent implements OnInit {
-  shows :Array<Show>;
+export class DummyService {
+shows: Array<show>;
+episodes: Array<Episode>;
   constructor() {
-    this.shows = [new Show({
-      name: 'Doctor Who',
+    this.shows = [
+      new Show( {
+        name: 'Doctor Who',
       language: 'English',
       genres: ['Sci-Fi', 'Action', 'Adventure'],
       id: 210,
@@ -37,9 +39,14 @@ export class SearchResultsComponent implements OnInit {
         image: 'https://static.tvmaze.com/uploads/images/medium_portrait/231/579166.jpg'
       })
     ];
-  }
+    getShows(): Observable<Array<Show>> {
+      return of<Array<Show>>(this.shows);
+    }
 
-  ngOnInit(): void {
-  }
+    getEpisodes(): Observable<Array<Episode>>{
+      return of<Array<Episode>>(this.episodes)
 
+
+
+  }
 }
